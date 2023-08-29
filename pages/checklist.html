@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Bag Checklist</title>
+
+    <!--================ style ==================-->
+    <link rel="stylesheet" href="../srs/css/checklist.css">
+</head>
+
+<body>
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <img src="logome.jpg" alt="logo">
+                        </span>
+                        <span class="title1"><h1>Mom & Me</h1></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../pages/firstpage.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../pages/comnote.html">
+                        <span class="icon">
+                            <ion-icon name="clipboard-outline"></ion-icon>
+                        </span>
+                        <span class="title">Note</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../pages/comcontact.html">
+                        <span class="icon">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </span>
+                        <span class="title">Contact</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../pages/comsetting.html">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="../pages/comsignout.html">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+
+                <div class="user">
+                    <!-- <input type="text"  placeholder="Account"> -->
+                    <img src="asq.jpg" alt="">
+                    <div>
+                        <h4>Dineshka.KS</h4>
+                        <small>Super admin</small>
+                    </div>
+                </div>
+            </div>
+
+        <div class="scroll-container">
+            <div class="cardBox">
+
+              <a href="firstpage.html">
+                <div class="back-card">
+                    <div>
+                        <button class="back-button">Back</button>
+                    </div>
+                </div>
+              </a>  
+  
+                <div class="head-card">
+                    <div>
+                        <div class="cardName">Hospital Bag Checklist</div>
+                    </div>
+                </div>
+
+            </div>
+
+          <div class="boxes">
+
+            <form id="hospitalBagForm" action="checklist.php" method="post">
+
+            <p style="font-size: 18px;text-align: left; color: blue;"><u>The admin</u></p> </br> 
+            <div id="checkbox-list">
+              
+              
+              <label class="check">ID
+                  <input type="checkbox" name="items[]" value="ID">
+                  <span class="checkmark"></span>
+              </label>
+            
+
+              <label class="check">Wallet
+                <input type="checkbox" name="items[]" value="Wallet">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Insurance card (if have)
+                <input type="checkbox" name="items[]" value="Insurance Card">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Birth plan
+                <input type="checkbox" name="items[]" value="Birth Plan">
+                <span class="checkmark"></span>
+              </label>
+              
+            
+            <p style="font-size: 18px;text-align: left; color: blue;"><u>Clothes</u></p> </br> 
+              <label class="check">Nursing pads
+                <input type="checkbox" name="items[]" value="Nursing Pads">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Comfortable Clothes
+                <input type="checkbox" name="items[]" value="Comfortable Clothes">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Slippers / Flip-flop
+                <input type="checkbox" name="items[]" value="Slippers/Flip-flop">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Going home outfit
+                <input type="checkbox" name="items[]" value="Going home outfit">
+                <span class="checkmark"></span>
+              </label>
+              
+              
+            <p style="font-size: 18px;text-align: left; color: blue;"><u>Toiletries</u></p> </br>   
+              <label class="check">tooth brush & Tooth paste
+                <input type="checkbox" name="items[]" value="ToothBrush and Toothpaste">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Baby wash / Soap
+                <input type="checkbox" name="items[]" value="Baby wash / Soap">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Face Wash
+                <input type="checkbox" name="items[]" value="Face Wash">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Shampoo & Conditioner
+                <input type="checkbox" name="items[]" value="Shampoo & Conditioner">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Lotion & Face Cream
+                <input type="checkbox" name="items[]" value="Lotion & Face Cream">
+                <span class="checkmark"></span>
+              </label>
+              
+
+            <p style="font-size: 18px;text-align: left; color: blue;"><u>All the extras</u></p> </br>   
+              <label class="check">Nipple balm
+                <input type="checkbox" name="items[]" value="Nipple Balm">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Pillow & soft blankets
+                <input type="checkbox" name="items[]" value="Pillow & soft blankets">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Towels
+                <input type="checkbox" name="items[]" value="Towels">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Phone & Charger
+                <input type="checkbox" name="items[]" value="Phone & Charger">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Reusable Water bottle
+                <input type="checkbox" name="items[]" value="Reusable Water Bottle ">
+                <span class="checkmark"></span>
+              </label>
+              
+            
+              
+            <p style="font-size: 18px;text-align: left; color: blue;"><u>for your Baby</u></p> </br>   
+              <label class="check">Going home outfit
+                <input type="checkbox" name="items[]" value="Going home outfit">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Diapers
+                <input type="checkbox" name="items[]" value="Diapers">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Baby blankets
+                <input type="checkbox" name="items[]" value="Baby blankets">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Socks / Boots
+                <input type="checkbox" name="items[]" value="Socks / Boots">
+                <span class="checkmark"></span>
+              </label>
+              
+              
+              <p style="font-size: 18px;text-align: left; color: blue;"><u>for your partner</u></p> </br>   
+              <label class="check">Change of clothes
+                <input type="checkbox" name="items[]" value="Change of Clothes">
+                <span class="checkmark"></span>
+              </label> 
+              <label class="check">Pillow & blanket 
+                <input type="checkbox" name="items[]" value="Pillow & Blanket">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Phone & charger 
+                <input type="checkbox" name="items[]" value="Phone & Charger">
+                <span class="checkmark"></span>
+              </label>
+              <label class="check">Toothbrush 
+                <input type="checkbox" name="items[]" value="Toothbrush">
+                <span class="checkmark"></span>
+              </label>
+             
+            </div>
+
+              <div>
+                <center>
+                <button type="submit" name="submit">Submit</button>
+                </center>
+              </div>
+            </form>
+
+            <a href="checklistlist.php">
+              <button class="button">View my list</button>
+              </a>
+                
+
+
+          </div>
+          
+        </div>
+    </div>
+    </div> 
+    
+
+    <!-- =========== Scripts =========  -->
+    <script src="../scripts/checklist.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>

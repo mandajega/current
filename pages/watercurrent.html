@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>water consumption</title>
+
+    <!--================ style ==================-->
+    <link rel="stylesheet" href="../srs/css/water.css">
+    
+</head>
+
+<body>
+
+    <!-- =============== Navigation ================ -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <img src="mom&me.jpg" alt="logo">
+                        </span>
+                        <span class="title1"><h1>Mom & Me</h1></span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../pages/firstpage.html">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../pages/comnote.html">
+                        <span class="icon">
+                            <ion-icon name="clipboard-outline"></ion-icon>
+                        </span>
+                        <span class="title">Note</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="../pages/comcontact.html">
+                        <span class="icon">
+                            <ion-icon name="call-outline"></ion-icon>
+                        </span>
+                        <span class="title">Contact</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="../pages/comsetting.html">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                        <span class="title">Settings</span>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="../pages/comsignout.html">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================= Main ==================== -->
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+
+               
+                <div class="user">
+                    <!-- <input type="text"  placeholder="Account"> -->
+                    <img src="asq.jpg" alt="">
+                    <div>
+                        <h4>Ashfaq mjaa</h4>
+                        <small>Super admin</small>
+                    </div>
+                </div>
+            </div>
+
+            
+    <title>Daily Drink Water</title>
+</head>
+
+<body>
+
+    <div class="cardBox">
+
+        <a href="button.html">
+        <div class="back-card">
+            <div>
+                <button class="back-button">Back</button>
+            </div>
+        </div>
+        </a>
+    
+        <div class="head-card">
+            <div>
+                <div class="cardName">water consumption</div>
+            </div>
+        </div>
+    
+    </div>
+
+    <center>
+<p style="color: black;">Goal: 2 Liters</p>
+
+    
+    <form method="post" action="water.php">
+    <div class="connect">
+
+        <div class="cup">
+            <div class="remained" id="remained">
+                <span id="liters"></span>
+                <small>Remained</small>
+            </div>
+            <div class="percentage" id="percentage"></div>
+        </div>
+
+
+        <div class="get">
+            <p style="color: black;" class="text">Select how many glasses of water that you have drank</p>
+            <div class="cups">
+                <div class="cup cup-small">250 ml</div>
+                <div class="cup cup-small">250 ml</div>
+                <div class="cup cup-small">250 ml</div>
+                <div class="cup cup-small">250 ml</div>
+                <div class="cup cup-small">250 ml</div>
+                <div class="cup cup-small">250 ml</div>
+                <div class="cup cup-small">250 ml</div>
+                <div class="cup cup-small">250 ml</div>
+
+                <div class="form-group">
+
+                    <label for="date"><h2>Date:</h2></label>
+                    <input type="date" id="date" name="date" style="font-size: 20px;"><br><br>
+                
+                <input type="number" name="water_drunk" min="0" max="8" step="1" placeholder="Glasses of water" style="font-size: 20px;">
+                <br><br>
+                <button id = "sub" type="submit" name="submit" >Submit</button>
+            </div>
+            </div>
+            </div>
+        </div>
+
+       
+    </form>
+
+    <a href="../pages/waterlog.php">
+        <button class="button button1">View my water consumption log</button>
+        </a>
+
+    </div>
+
+    </center>
+
+    <!-- =========== Scripts =========  -->
+    <script src="../scripts/water.js"></script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    
+    
+</body>
+</html>
