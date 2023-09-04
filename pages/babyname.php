@@ -1,3 +1,21 @@
+<?php
+
+session_start();
+
+require_once('dbcon.php');
+
+$user_id = $_SESSION['user_id'];
+
+$sql_first_table = "SELECT  babyName FROM babynamegenerator ";
+$stmt = $conn->prepare($sql_first_table);
+$stmt->execute(); // Execute the prepared statement
+$result_first_table = $stmt->get_result();
+
+$stmt->close();
+$conn->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -114,8 +132,8 @@
             <!-- ================ Input & Output Details List ================= -->
             <div class="row">
 
-                <div class="sentence1"<h1>What should we name your baby?</h1></div>
-                <div class="sentence1"<h1>n results found</h1></div>
+                <div class="sentence1"<h2>What should we name your baby?</h2></div>
+                
                 <div>
                     <div class="box">
                         <a href="#popup-box">
@@ -216,53 +234,25 @@
                 <div class="det-hd"><u>Popular Names</u></div>
 
                 <div class="details">
-                  <table>
-                    <tr>
-                      <th>Favorite</th>
-                      <th>Gender</th>
-                      <th>Baby Name</th>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <div class="favorite-button"><i class="far fa-heart"></i></div>
-                      </td>
-                      <td><ion-icon name="female-outline"></ion-icon></td>
-                      <td>Kirubaluxmy</td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <div class="favorite-button"><i class="far fa-heart"></i></div>
-                      </td>
-                      <td><ion-icon name="female-outline"></ion-icon></td>
-                      <td>Ahalya</td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <div class="favorite-button"><i class="far fa-heart"></i></div>
-                      </td>
-                      <td><ion-icon name="male-outline"></ion-icon></td>
-                      <td>Yoganath</td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <div class="favorite-button"><i class="far fa-heart"></i></div>
-                      </td>
-                      <td><ion-icon name="male-outline"></ion-icon></td>
-                      <td>Dineshkanth</td>
-                    </tr>
+                
+                <table>
+                  <tr>
+                    <th>Favorite</th>
+                    <th>Baby Name</th>
+                  </tr>
+                <?php while ($row = $result_first_table->fetch_assoc()) : ?>
+                  <tr>
+                    <td> <div class="favorite-button"  onclick="toggleFavorite(this, '<?php echo $row['babyName']; ?>')"> 
+                    <i class="far fa-heart"></i></div>
+                </div>
+                  </td>
+                    <td><?php echo $row['babyName']; ?></td>
+                  </tr>
+                  <?php endwhile; ?>
+                </table>
                     
-                    <tr>
-                      <td>
-                        <div class="favorite-button"><i class="far fa-heart"></i></div>
-                      </td>
-                      <td><ion-icon name="male-outline"></ion-icon></td>
-                      <td>Mr.Rude</td>
-                    </tr>
-                  </table>
+
+
                 </div>
                 <br><br>
                 <center>
@@ -274,6 +264,7 @@
     </div>
 
     <!-- =========== Scripts =========  -->
+    
     <script src="../scripts/babyname.js"></script>
 
     <!-- ====== ionicons ======= -->

@@ -41,11 +41,3 @@ const favoriteButtons = document.querySelectorAll('.favorite-button');
     favoriteButtons.forEach(button => {
       button.addEventListener('click', toggleFavorite);
     });
-
-    function toggleFavorite(event) {
-      const button = event.currentTarget;
-      button.classList.toggle('active');
-      const heartIcon = button.querySelector('i');
-      heartIcon.classList.toggle('fas');
-      heartIcon.classList.toggle('filled');
-    }
