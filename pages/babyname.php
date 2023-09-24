@@ -234,15 +234,18 @@ $conn->close();
                 <div class="det-hd"><u>Popular Names</u></div>
 
                 <div class="details">
-                
+
+                <form action="save_favorites.php" method="post">
+                                 
                 <table>
                   <tr>
-                    <th>Favorite</th>
+                    <th>Select Favorites</th>
                     <th>Baby Name</th>
                   </tr>
                 <?php while ($row = $result_first_table->fetch_assoc()) : ?>
                   <tr>
-                    <td> <div class="favorite-button"  onclick="toggleFavorite(this, '<?php echo $row['babyName']; ?>')"> 
+                    <td> 
+                      
                     <i class="far fa-heart"></i></div>
                 </div>
                   </td>
@@ -256,7 +259,7 @@ $conn->close();
                 </div>
                 <br><br>
                 <center>
-                <button type="submit" name="fav">Save Favorites</button>
+                <button type="submit" name="save_favorites">Save Favorites</button>
                 </center>
             </div>
           </div>  
