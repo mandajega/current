@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once('dbcon.php');
 
 // Check if the form has been submitted

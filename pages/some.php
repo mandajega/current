@@ -1,28 +1,13 @@
 <?php
 // Check if the form has been submitted
-if (isset($_POST['submit'])) {
-    // Replace the following with your actual database credentials
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "momandme";
-
-    // Create a database connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+require_once('dbcon.php');
 
 
     session_start();
 
    
 // Function to escape and sanitize input
-function sanitize_input($input, $conn) {
-    return $conn->real_escape_string($input);
-}
+
 
 // Check if the form was submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -33,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Prepare and execute the INSERT statement for each selected item
         foreach ($_POST['items'] as $item) {
-            $item_name = sanitize_input($item, $conn);
+            $item_name = $item ;
             $sql = "INSERT INTO stuffyouwillneed (user_id, item_name) VALUES ('$user_id', '$item_name')";
             if ($conn->query($sql) !== TRUE) {
                 echo "Error: " . $sql . "<br>" . $conn->error;
@@ -46,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Please select at least one item from the checklist.";
     }
 }
-}
+
 
 // Close the database connection
 $conn->close();
