@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         // Set user_id in the session
         $_SESSION['user_id'] = $user_id;
-        $_SESSION['login_time'] = time();
+
 
 
         // Redirect to different pages based on user type

@@ -1,19 +1,72 @@
 <?php
-
 session_start();
-
 require_once('dbcon.php');
 
-$user_id = $_SESSION['user_id'];
+// Check if the form has been submitted
+if (isset($_POST['apply_filter'])) {
+    // Retrieve the filter options from $_POST
+    $display = $_POST['display'];
+    $gender = $_POST['gender'];
+    $origin = $_POST['origin'];
+    $length = $_POST['length'];
+    $letter = $_POST['letter'];
 
-$sql_first_table = "SELECT  babyName FROM babynamegenerator ";
-$stmt = $conn->prepare($sql_first_table);
-$stmt->execute(); // Execute the prepared statement
-$result_first_table = $stmt->get_result();
+    // Build the SQL query based on the selected filter options
+    $sql = "SELECT babyName FROM babynamegenerator WHERE 1=1"; // Start with a true condition
 
-$stmt->close();
-$conn->close();
+    // Add conditions based on selected filter options
+    if ($display == 'Favorites') {
+        $sql .= " AND isFavorite = 1"; // Assuming there's a column isFavorite
+    }
 
+    if ($gender != 'All') {
+        $sql .= " AND gender = ?";
+    }
+
+    if ($origin != 'All') {
+        $sql .= " AND origin = ?";
+    }
+
+    if ($length != 'All') {
+        // Assuming you have a column like nameLength
+        if ($length == 'short') {
+            $sql .= " AND nameLength >= 2 AND nameLength <= 4";
+        } elseif ($length == 'medium') {
+            $sql .= " AND nameLength >= 5 AND nameLength <= 7";
+        } elseif ($length == 'long') {
+            $sql .= " AND nameLength >= 8 AND nameLength <= 12";
+        }
+    }
+
+    if ($letter != 'All') {
+        $sql .= " AND babyName LIKE ?";
+        $letter = $letter . '%'; // Add a wildcard to match names starting with the selected letter
+    }
+
+    $stmt = $conn->prepare($sql);
+
+    // Bind parameters if needed
+    if ($gender != 'All') {
+        $stmt->bind_param("s", $gender);
+    }
+    
+    if ($letter != 'All') {
+        $stmt->bind_param("s", $letter);
+    }
+
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    $conn->close();
+} else {
+    // Default query without any filters when the page is initially loaded
+    $sql_first_table = "SELECT babyName FROM babynamegenerator";
+    $stmt = $conn->prepare($sql_first_table);
+    $stmt->execute();
+    $result_first_table = $stmt->get_result();
+    $stmt->close();
+    $conn->close();
+}
 ?>
 
 <!DOCTYPE html>
@@ -146,36 +199,43 @@ $conn->close();
                             <h1 style="color: green;">
                                 Filter
                             </h1>
+                            <form action="filter_names.php" method="post" id="filterForm">
                             <div class="container1">
                                 <div class="row1">
                                   <h3 class="heading">Display<span class="arrow">▼</span></h2>
                                   <div class="content1">
                 
-                                    <button>All Name</button>
-                                    <button>Favorite Only</button>
+                                  <select name="display">
+                                    <option value="All">All</option>
+                                     <option value="Favorites">Favorites</option>
+                                      
+                                           </select>
+                                         </div>
+                                       </div>
                 
-                                  </div>
-                                </div>
-                
+                             
                                 <div class="row1">
-                                  <h3 class="heading">By Gender<span class="arrow">▼</span></h3>
-                                  <div class="content1">
-                
-                                    <button>Girl</button>
-                                    <button>Boy</button>
-                                    
-                
-                                  </div>
-                                </div>
+                               <h3 class="heading">By Gender<span class="arrow">▼</span></h3>
+                               <div class="content1">
+                                  <select name="gender">
+                                    <option value="All">All</option>
+                                     <option value="Girl">Girl</option>
+                                      <option value="Boy">Boy</option>
+                                           </select>
+                                         </div>
+                                       </div>
                 
 
                                 <div class="row1">
                                     <h3 class="heading">By Origin<span class="arrow">▼</span></h2>
                                     <div class="content1">
+                                      <select name="origin">
                   
-                                      <button>Tamil</button>
-                                      <button>Sinhala</button>
-                                      <button>English</button>
+                                      <option value = "Tamil">Tamil</option>
+                                      <option value = "Sinhala">Sinhala</option>
+                                      <option value = "English">English</option>
+                                      
+                                      </select>
                   
                                     </div>
                                   </div>
@@ -183,10 +243,12 @@ $conn->close();
                                   <div class="row1">
                                     <h3 class="heading">By Length<span class="arrow">▼</span></h3>
                                     <div class="content1">
+                                      <select name="length">
                   
-                                      <button>Short(2-4 Letters)</button>
-                                      <button>Medium(5-7 Letters)</button>
-                                      <button>Long(8-12 Letters)</button>
+                                      <option value ="short">Short(2-4 Letters)</option>
+                                      <option value ="medium" >Medium(5-7 Letters)</option>
+                                      <option value = "long" >Long(8-12 Letters)</option>
+                                      </select>
                   
                                     </div>
                                   </div>
@@ -195,21 +257,24 @@ $conn->close();
                                     <h3 class="heading">By First Letter<span class="arrow">▼</span></h3>
                   
                                     <div class="content1">
+                                      <select name="letter">
                                       
-                                      <button>A</button> <button>B</button> <button>C</button> <button>D</button> <button>E</button>
-                                      <button>F</button> <button>G</button> <button>H</button> <button>I</button> <button>J</button>
-                                      <button>K</button> <button>L</button> <button>M</button> <button>N</button> <button>O</button>
-                                      <button>P</button> <button>Q</button> <button>R</button> <button>S</button> <button>T</button>
-                                      <button>U</button> <button>V</button> <button>W</button> <button>X</button> <button>Y</button>
-                                      <button>Z</button>
+                                      <option value = "A">A</option><option value = "B">B</option><option value = "C">C</option><option value = "D">D</option><option value = "E">E</option><option value = "F">F</option>
+                                      <option value = "G">G</option><option value = "H">H</option><option value = "I">I</option><option value = "J">J</option><option value = "K">K</option><option value = "L">L</option>
+                                      <option value = "M">M</option><option value = "N">N</option><option value = "O">O</option><option value = "P">P</option><option value = "Q">Q</option><option value = "R">R</option>
+                                      <option value = "S">S</option><option value = "T">T</option><option value = "U">U</option><option value = "V">V</option><option value = "W">W</option><option value = "X">X</option>
+                                      <option value = "Y">Y</option><option value = "Z">Z</option>
+</select>
 
                                     </div>
                   
                                   </div>
                                   <br><br><br>
                                   <center>
-                                  <button type="submit" name="submit">Apply</button>
+                                  <button type="submit" name="apply_filter">Apply</button>
                                   </center>
+
+</form>
                               </div>
                             <a href="#"
                             class="box-close">
@@ -235,7 +300,7 @@ $conn->close();
 
                 <div class="details">
 
-                <form action="save_favorites.php" method="post">
+                <form action="save_favorites.php" method="post" id="favoritesForm">
                                  
                 <table>
                   <tr>
@@ -245,22 +310,21 @@ $conn->close();
                 <?php while ($row = $result_first_table->fetch_assoc()) : ?>
                   <tr>
                     <td> 
-                      
-                    <i class="far fa-heart"></i></div>
-                </div>
-                  </td>
-                    <td><?php echo $row['babyName']; ?></td>
-                  </tr>
+                    <input type="checkbox" name="selected_names[]" value="<?php echo $row['babyName']; ?>">
+        </td>
+        <td><?php echo $row['babyName']; ?></td>
+      </tr>
                   <?php endwhile; ?>
                 </table>
                     
 
 
-                </div>
+                
                 <br><br>
                 <center>
                 <button type="submit" name="save_favorites">Save Favorites</button>
                 </center>
+                </form>
             </div>
           </div>  
         </div>

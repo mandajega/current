@@ -41,3 +41,15 @@ const favoriteButtons = document.querySelectorAll('.favorite-button');
     favoriteButtons.forEach(button => {
       button.addEventListener('click', toggleFavorite);
     });
+
+    function toggleFavorite(icon) {
+      const checkbox = icon.querySelector('input[type="checkbox"]');
+      const heartIcon = icon.querySelector('i');
+      checkbox.checked = !checkbox.checked;
+  
+      if (checkbox.checked) {
+        heartIcon.classList.add('fas', 'fa-heart'); // Add a filled heart icon
+      } else {
+        heartIcon.classList.remove('fas', 'fa-heart'); // Remove the filled heart icon
+      }
+    }
