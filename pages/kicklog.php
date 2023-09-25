@@ -131,7 +131,8 @@ $conn->close();
                 </div>
             </div>
 
-              
+            <div class="scroll-container"> 
+            <div class="cardBox">  
             <a href="kick.html">
         <div class="back-card">
             <div>
@@ -139,6 +140,7 @@ $conn->close();
             </div>
         </div>
         </a>
+        </div>
             <center>
 
             <div class="rightcolumn">
@@ -176,9 +178,10 @@ $conn->close();
           </div>
 
               </div>
+              </center>
+              </div>
 
             </div>
-            </center>
 
 
     <!-- =========== Scripts =========  -->

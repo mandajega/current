@@ -190,6 +190,10 @@ body {
   background: pink;
   transition: 0.5s;
 }
+.scroll-container {
+  max-height: 90vh;
+  overflow-y: auto;
+}
 .main.active {
   width: calc(100% - 80px);
   left: 80px;
