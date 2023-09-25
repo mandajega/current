@@ -54,5 +54,18 @@ prevNextIcon.forEach(icon => { // getting prev and next icons
     });
 });
 
+// Add this script in your JavaScript file
+document.addEventListener('DOMContentLoaded', function () {
+    const calendar = document.getElementById('calendar');
+    const selectedDateInput = document.getElementById('selectedDate');
+
+    // Assuming you have a way to get the selected date from your calendar component
+    calendar.addEventListener('dateSelected', function (event) {
+        const selectedDate = event.detail.date; // Get the selected date from the calendar
+        selectedDateInput.value = selectedDate;
+    });
+});
+
+
 
   
