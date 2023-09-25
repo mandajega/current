@@ -75,7 +75,7 @@ $conn->close();
                         <span class="icon">
                             <ion-icon name="call-outline"></ion-icon>
                         </span>
-                        <span class="title">Contact</span>
+                        <span class="title">Contect</span>
                     </a>
                 </li>
 
@@ -117,15 +117,14 @@ $conn->close();
             </div>
 
             <div class="scroll-container">
-            <div class="cardBox">
+            <a href="../pages/comcontact.html">
+          <div class="back-card">
+            <div>
+                <button class="back-button">Back</button>
+            </div>
+          </div>
+        </a>
 
-                <div class="back-card">
-                    <a href="provi.html">
-                    <div>
-                        <button class="back-button">Back</button>
-                    </div>
-                    </a>
-                </div>
 
             <center>
 
@@ -152,21 +151,18 @@ $conn->close();
                 <tr>
                     <td><?php echo $row['name']; ?></td>
                     <td><?php echo $row['hospital']; ?></td>
-                    <td><?php echo $row['contactno']; ?></td>
+                    <td><center><?php echo $row['contactno']; ?></center></td>
                     
                 </tr>
             <?php endwhile; ?>
         </table>
     </div>
-
           </div>
-
               </div>
-
+              </center>
+              </div>
             </div>
-            </center>
-            </div>
-
+            
 
     <!-- =========== Scripts =========  -->
     <script src="../scripts/navigation.js"></script>
