@@ -75,12 +75,9 @@ $conn->close();
                         <span class="icon">
                             <ion-icon name="call-outline"></ion-icon>
                         </span>
-                        <span class="title">Contect</span>
+                        <span class="title">Contact</span>
                     </a>
                 </li>
-
-               
-
 
                 <li>
                     <a href="#">
@@ -107,13 +104,6 @@ $conn->close();
             <div class="topbar">
                 <div class="toggle">
                     <ion-icon name="menu-outline"></ion-icon>
-                </div>
-
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
                 </div>
 
                 <div class="user">
